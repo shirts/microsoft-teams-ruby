@@ -111,6 +111,20 @@ end
 
 ```
 
+## Execute tests/specs
+
+To execute gem tests locally, use Docker with the commands below:
+
+```bash
+git clone https://github.com/shirts/microsoft-teams-ruby
+cd microsoft-teams-ruby
+docker build -t microsoft_teams_ruby_specs .
+
+# Then, run this command how many times you want,
+# after editing local files, and so on, to get
+# feedback from test suite of gem.
+docker run -v $(pwd):/app/ -it microsoft_teams_ruby_specs
+```
 
 ## Contributing
 
