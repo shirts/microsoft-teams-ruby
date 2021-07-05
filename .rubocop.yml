@@ -29,5 +29,35 @@ Style/IfUnlessModifier:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
-Layout/SpaceInsideParens:
-  EnforcedStyle: space
+Style/FrozenStringLiteralComment:
+  Enabled: false
+  
+Layout/SpaceInsideParens: 
+  Enabled: false
+  
+Style/HashSyntax:
+  Enabled: false
+  
+Style/SymbolArray:
+  Enabled: false
+  
+Layout/TrailingEmptyLines:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+Layout/EmptyLines:
+  Enabled: false
+
+Layout/EmptyLineBetweenDefs:
+  Enabled: false
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+Style/MutableConstant:
+  Enabled: false
