@@ -28,3 +28,6 @@ Style/IfUnlessModifier:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+Layout/SpaceInsideParens:
+  EnforcedStyle: space
