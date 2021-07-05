@@ -1,5 +1,6 @@
 ## [Unreleased]
 
+- Setup of automation for rubygems publishing
 - Setup of CI with Github Actions
 - Setup of Dockerfile for local tests
 - Creation of CHANGELOG.md
