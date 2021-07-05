@@ -61,3 +61,6 @@ Layout/EmptyLineAfterGuardClause:
 
 Style/MutableConstant:
   Enabled: false
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
