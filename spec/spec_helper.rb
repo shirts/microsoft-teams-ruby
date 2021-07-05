@@ -2,7 +2,7 @@ require "bundler/setup"
 require "ms_teams"
 require 'webmock/rspec'
 
-if ENV['CODECOV_TOKEN']
+unless ENV['CODECOV_TOKEN'].nil? || ENV['CODECOV_TOKEN'].empty?
   require 'simplecov'
   SimpleCov.start
   require 'codecov'
