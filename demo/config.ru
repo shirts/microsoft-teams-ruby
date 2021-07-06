@@ -125,7 +125,7 @@ def generate_html_with(env)
               <br>
               <p>#{response}</p>
               <hr>
-              #{configurations.inspect}
+              #{configurations.entries.inspect}
             </div>
           </div>
         </div>
