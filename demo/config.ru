@@ -13,7 +13,7 @@ def generate_html_with(env)
       configurations = JSON.parse(post_data['configurations'].strip)
 
       message = MsTeams::Message.new do |m|
-        configurations.entries do |k, v|
+        configurations.entries.each do |k, v|
           m[k] = v
         end
       end
