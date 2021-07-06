@@ -9,25 +9,25 @@ def generate_html_with(env)
   configurations_is_filled = !post_data.empty? && !post_data['configurations'].nil? && !post_data['configurations'].empty?
   
   example_configurations = {
-    "url": "YOUR_MICROSOFT_TEAMS_INCOMING_WEBHOOK_URL",
+    "url": "INSERT_HERE_YOUR_MICROSOFT_TEAMS_INCOMING_WEBHOOK_URL",
     "title": "My first message!",
     "text": "Hey, that is my first message!",
     "summary": "Check it, please!",
     "themeColor": "00ff44",
     "sections": [
       {
-        "text": "There is a problem with Push notifications, they dont seem to be picked up by the connector.",
-        "activityTitle": "Miguel Garcie",
-        "activitySubtitle": "9/13/2016, 11:46am",
-        "activityImage": "https://connectorsdemo.azurewebsites.net/images/MSC12_Oscar_002.jpg",
+        "text": "Hey, thanks for using this demo! That's your first message with incoming webhooks of Microsoft Teams. Enjoy!",
+        "activityTitle": "Pedro Furtado",
+        "activitySubtitle": "01/01/1990, 7:30AM",
+        "activityImage": "https://github.com/pedrofurtado.png",
         "facts": [
           {
-            "name": "Repository:",
-            "value": "mgarciatest"
+            "name": "Origin:",
+            "value": "Demo"
           },
           {
-            "name": "Issue #:",
-            "value": "176715375"
+            "name": "Awesome:",
+            "value": "Yes!"
           }
         ]
       }
@@ -35,7 +35,7 @@ def generate_html_with(env)
     "potentialAction": [
       {
         "@type": "ActionCard",
-        "name": "Send answer",
+        "name": "Quiz",
         "inputs": [
           {
             "@type": "TextInput",
@@ -47,7 +47,7 @@ def generate_html_with(env)
         "actions": [
           {
             "@type": "HttpPOST",
-            "name": "Send",
+            "name": "Send answer",
             "isPrimary": true,
             "target": "https://some-external-site.com/myaction/do-it"
           }
@@ -55,7 +55,7 @@ def generate_html_with(env)
       },
       {
         "@type": "HttpPOST",
-        "name": "Cancel",
+        "name": "Decline",
         "target": "https://some-external-site.com/myaction/do-it-again"
       },
       {
@@ -82,15 +82,15 @@ def generate_html_with(env)
       end
 
       begin
-        s = message.send
-        response = "Message sent! #{s.inspect}"
+        message.send
+        response = "✅ Message sent! 🚀"
       rescue MsTeams::Message::FailedRequest => e
-        response = "Message not sent, check the error: Failed request - #{e.message}"
+        response = "❌ Message not sent, check the error: Failed request - #{e.message}"
       end
     rescue JSON::ParserError => e
-      response = "Message not sent, check the error: JSON invalid - #{e.message}"
+      response = "⚠️ Message with error: JSON invalid - #{e.message}"
     rescue StandardError => e
-      response = "Message not sent, check the error: Generic error - #{e.message}"
+      response = "❌ Message with error: Generic error - #{e.message}"
     end
   end
 
@@ -114,8 +114,9 @@ def generate_html_with(env)
                 <div class='form-group'>
                   <textarea class='form-control' rows='10' name='configurations'>#{JSON.pretty_generate(configurations.empty? ? example_configurations : configurations)}</textarea>
                 </div>
+                <br>
                 <div class='d-grid gap-2'>
-                  <button type='submit' class='btn btn-lg btn-primary'>Send</button>
+                  <button type='submit' class='btn btn-lg btn-primary'>Send message</button>
                 </div>
               <form>
             </div>
