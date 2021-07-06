@@ -82,8 +82,8 @@ def generate_html_with(env)
       end
 
       begin
-        message.send
-        response = 'Message sent!'
+        s = message.send
+        response = "Message sent! #{s.inspect}"
       rescue MsTeams::Message::FailedRequest => e
         response = "Message not sent, check the error: Failed request - #{e.message}"
       end
@@ -124,8 +124,6 @@ def generate_html_with(env)
               <br>
               <br>
               <p>#{response}</p>
-              <hr>
-              #{configurations.entries.inspect}
             </div>
           </div>
         </div>
