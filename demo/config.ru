@@ -11,7 +11,7 @@ def generate_html_with(env)
     configurations = {}
 
     begin
-      configurations = JSON.parse(post_data['configurations'])
+      configurations = JSON.parse(post_data['configurations'].strip)
 
       message = MsTeams::Message.new do |m|
         configurations.entries do |k, v|
@@ -26,7 +26,7 @@ def generate_html_with(env)
         response = "Message not sent, check the error: #{e.message}"
       end
     rescue StandardError => e
-      response = 'Message not sent, check the error: JSON invalid!'
+      response = "Message not sent, check the error: JSON invalid - #{e.message}"
     end
   end
 
@@ -57,14 +57,14 @@ def generate_html_with(env)
                       "themeColor": "fcba03",
                       "sections": [
                         {
-                          "text": "There is a problem with Push notifications, they don't seem to be picked up by the connector.",
+                          "text": "There is a problem with Push notifications, they dont seem to be picked up by the connector.",
                           "activityTitle": "Miguel Garcie",
                           "activitySubtitle": "9/13/2016, 11:46am",
                           "activityImage": "https://connectorsdemo.azurewebsites.net/images/MSC12_Oscar_002.jpg",
                           "facts": [
                             {
                               "name": "Repository:",
-                              "value": "mgarcia\\test"
+                              "value": "mgarciatest"
                             },
                             {
                               "name": "Issue #:",
@@ -90,7 +90,7 @@ def generate_html_with(env)
                               "@type": "HttpPOST",
                               "name": "Send",
                               "isPrimary": true,
-                              "target": 'https://jsonplaceholder.typicode.com/posts'
+                              "target": "https://jsonplaceholder.typicode.com/posts"
                             }
                           ]
                         },
