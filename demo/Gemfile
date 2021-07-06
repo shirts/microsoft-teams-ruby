@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-gem 'ms_teams', github: 'pedrofurtado/microsoft-teams-ruby', branch: 'heroku'
+gem 'ms_teams', github: 'pedrofurtado/microsoft-teams-ruby', branch: 'master'
 gem 'rack'
