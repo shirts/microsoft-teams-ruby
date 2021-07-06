@@ -104,13 +104,23 @@ def generate_html_with(env)
         <title>MS-Teams - Demo App</title>
       </head>
       <body>
-        <div class='container'>
+        <div class='container' style='margin-top: 50px;'>
+          <div class='row'>
+            <div class='col-md-12'>
+              <h1 class='text-center'>MS-Teams - Demo App</h1>
+              <br>
+              <br>
+              <p style='word-break: break-all;' class='text-center'>For more details check the official repo: <a href="https://github.com/shirts/microsoft-teams-ruby">https://github.com/shirts/microsoft-teams-ruby</a></p>
+              <br>
+              <br>
+            </div>
+          </div>
           <div class='row'>
             <div class='col-md-6'>
               <strong>Configuration</strong>
               <br>
               <br>
-              <form action='https://microsoft-teams-ruby.herokuapp.com/' method='post'>
+              <form action='https://microsoft-teams-ruby.herokuapp.com' method='post'>
                 <div class='form-group'>
                   <textarea class='form-control' rows='10' name='configurations'>#{JSON.pretty_generate(configurations.empty? ? example_configurations : configurations)}</textarea>
                 </div>
