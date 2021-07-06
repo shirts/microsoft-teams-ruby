@@ -13,7 +13,7 @@ def generate_html_with(env)
         <title>MS-Teams - Demo App</title>
       </head>
       <body>
-        demo page for gem ms_teams 3
+        demo page for gem ms_teams 4
       </body>
     </html>
   HTML
