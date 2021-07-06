@@ -19,6 +19,7 @@ jobs:
         run: |
           cd demo/
           bundle install
+          bundle update ms_teams
           cd ../
       - name: Define Heroku credentials
         run: |
