@@ -1,0 +1,21 @@
+GIT
+  remote: https://github.com/pedrofurtado/microsoft-teams-ruby.git
+  revision: 3de58167fe6374f43e4d8e6377b992fae546aa86
+  branch: heroku
+  specs:
+    ms_teams (1.0.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    rack (2.2.3)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  ms_teams!
+  rack
+
+BUNDLED WITH
+   2.2.21
