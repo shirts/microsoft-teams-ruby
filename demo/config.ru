@@ -112,7 +112,7 @@ def generate_html_with(env)
               <br>
               <form action='https://microsoft-teams-ruby.herokuapp.com/' method='post'>
                 <div class='form-group'>
-                  <textarea class='form-control' rows='10' name='configurations'>#{example_configurations}</textarea>
+                  <textarea class='form-control' rows='10' name='configurations'>#{JSON.pretty_generate(example_configurations)}</textarea>
                 </div>
                 <div class='d-grid gap-2'>
                   <button type='submit' class='btn btn-lg btn-primary'>Send</button>
