@@ -113,6 +113,9 @@ def generate_html_with(env)
                     }
                   </textarea>
                 </div>
+                <div class='d-grid gap-2'>
+                  <button type='submit' class='btn btn-lg btn-primary'>Send</button>
+                </div>
               <form>
             </div>
             <div class='col-md-6'>
