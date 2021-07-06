@@ -5,11 +5,10 @@ require "ms_teams"
 def generate_html_with(env)
   post_data = Rack::Request.new(env).params
   response = ''
+  configurations = {}
   configurations_is_filled = !post_data.empty? && !post_data['configurations'].nil? && !post_data['configurations'].empty?
 
   if configurations_is_filled
-    configurations = {}
-
     begin
       configurations = JSON.parse(post_data['configurations'].strip)
 
@@ -23,10 +22,12 @@ def generate_html_with(env)
         message.send
         response = 'Message sent!'
       rescue MsTeams::Message::FailedRequest => e
-        response = "Message not sent, check the error: #{e.message}"
+        response = "Message not sent, check the error: Failed request - #{e.message}"
       end
-    rescue StandardError => e
+    rescue JSON::ParserError => e
       response = "Message not sent, check the error: JSON invalid - #{e.message}"
+    rescue StandardError => e
+      response = "Message not sent, check the error: Generic error - #{e.message}"
     end
   end
 
@@ -123,6 +124,8 @@ def generate_html_with(env)
               <br>
               <br>
               <p>#{response}</p>
+              <hr>
+              #{configurations.inspect}
             </div>
           </div>
         </div>
