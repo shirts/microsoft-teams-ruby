@@ -7,10 +7,73 @@ def generate_html_with(env)
   response = ''
   configurations = {}
   configurations_is_filled = !post_data.empty? && !post_data['configurations'].nil? && !post_data['configurations'].empty?
+  
+  example_configurations = {
+    "url": "YOUR_MICROSOFT_TEAMS_INCOMING_WEBHOOK_URL",
+    "title": "My first message!",
+    "text": "Hey, that is my first message!",
+    "summary": "Check it, please!",
+    "themeColor": "00ff44",
+    "sections": [
+      {
+        "text": "There is a problem with Push notifications, they dont seem to be picked up by the connector.",
+        "activityTitle": "Miguel Garcie",
+        "activitySubtitle": "9/13/2016, 11:46am",
+        "activityImage": "https://connectorsdemo.azurewebsites.net/images/MSC12_Oscar_002.jpg",
+        "facts": [
+          {
+            "name": "Repository:",
+            "value": "mgarciatest"
+          },
+          {
+            "name": "Issue #:",
+            "value": "176715375"
+          }
+        ]
+      }
+    ],
+    "potentialAction": [
+      {
+        "@type": "ActionCard",
+        "name": "Send answer",
+        "inputs": [
+          {
+            "@type": "TextInput",
+            "id": "description",
+            "isMultiline": true,
+            "title": "Description"
+          }
+        ],
+        "actions": [
+          {
+            "@type": "HttpPOST",
+            "name": "Send",
+            "isPrimary": true,
+            "target": "https://some-external-site.com/myaction/do-it"
+          }
+        ]
+      },
+      {
+        "@type": "HttpPOST",
+        "name": "Cancel",
+        "target": "https://some-external-site.com/myaction/do-it-again"
+      },
+      {
+        "@type": "OpenUri",
+        "name": "Open a link",
+        "targets": [
+          {
+            "os": "default",
+            "uri": "https://github.com/shirts/microsoft-teams-ruby"
+          }
+        ]
+      }
+    ]
+  }
 
   if configurations_is_filled
     begin
-      configurations = JSON.parse(post_data['configurations'].strip)
+      configurations = JSON.parse(post_data['configurations'])
 
       message = MsTeams::Message.new do |m|
         configurations.entries.each do |k, v|
@@ -49,70 +112,7 @@ def generate_html_with(env)
               <br>
               <form action='https://microsoft-teams-ruby.herokuapp.com/' method='post'>
                 <div class='form-group'>
-                  <textarea class='form-control' rows='10' name='configurations'>
-                    {
-                      "url": "",
-                      "title": "qqqqqq",
-                      "text": "xx",
-                      "summary": "qq",
-                      "themeColor": "fcba03",
-                      "sections": [
-                        {
-                          "text": "There is a problem with Push notifications, they dont seem to be picked up by the connector.",
-                          "activityTitle": "Miguel Garcie",
-                          "activitySubtitle": "9/13/2016, 11:46am",
-                          "activityImage": "https://connectorsdemo.azurewebsites.net/images/MSC12_Oscar_002.jpg",
-                          "facts": [
-                            {
-                              "name": "Repository:",
-                              "value": "mgarciatest"
-                            },
-                            {
-                              "name": "Issue #:",
-                              "value": "176715375"
-                            }
-                          ]
-                        }
-                      ],
-                      "potentialAction": [
-                        {
-                          "@type": "ActionCard",
-                          "name": "Answer",
-                          "inputs": [
-                            {
-                              "@type": "TextInput",
-                              "id": "title",
-                              "isMultiline": true,
-                              "title": "Main title"
-                            }
-                          ],
-                          "actions": [
-                            {
-                              "@type": "HttpPOST",
-                              "name": "Send",
-                              "isPrimary": true,
-                              "target": "https://jsonplaceholder.typicode.com/posts"
-                            }
-                          ]
-                        },
-                        {
-                          "@type": "HttpPOST",
-                          "name": "Close",
-                          "target": "https://jsonplaceholder.typicode.com/posts"
-                        },
-                        {
-                          "@type": "OpenUri",
-                          "name": "Access system",
-                          "targets": [
-                            {
-                              "os": "default",
-                              "uri": "https://jsonplaceholder.typicode.com"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  </textarea>
+                  <textarea class='form-control' rows='10' name='configurations'>#{example_configurations}</textarea>
                 </div>
                 <div class='d-grid gap-2'>
                   <button type='submit' class='btn btn-lg btn-primary'>Send</button>
