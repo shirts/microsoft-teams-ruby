@@ -104,7 +104,7 @@ def generate_html_with(env)
         <title>MS-Teams - Demo App</title>
       </head>
       <body>
-        <div class='container' style='margin-top: 50px;'>
+        <div class='container' style='margin-top: 50px; padding-bottom: 50px;'>
           <div class='row'>
             <div class='col-md-12'>
               <h1 class='text-center'>MS-Teams - Demo App</h1>
