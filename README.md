@@ -1,5 +1,7 @@
 # MS-Teams
 
+[![CI](https://github.com/shirts/microsoft-teams-ruby/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/shirts/microsoft-teams-ruby/actions/workflows/ci.yml)
+
 A lightweight Ruby gem to send
 [actionable message cards](https://docs.microsoft.com/en-us/outlook/actionable-messages/send-via-connectors)
 to an Office 365 group (Microsoft Teams)
