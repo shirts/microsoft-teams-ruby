@@ -126,6 +126,14 @@ docker build -t microsoft_teams_ruby_specs .
 docker run -v $(pwd):/app/ -it microsoft_teams_ruby_specs
 ```
 
+## Demo
+
+It's provided a simple demo app, in Heroku, that uses the gem always in latest commit. You can check and test your messages here:
+
+https://microsoft-teams-ruby.herokuapp.com
+
+🚨 Important note: The first page load can be slow, because of Heroku free tier.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/shirts/microsoft-teams-ruby
