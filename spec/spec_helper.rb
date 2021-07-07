@@ -2,6 +2,13 @@ require "bundler/setup"
 require "ms_teams"
 require 'webmock/rspec'
 
+unless ENV['CODECOV_TOKEN'].nil? || ENV['CODECOV_TOKEN'].empty?
+  require 'simplecov'
+  SimpleCov.start
+  require 'codecov'
+  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+end
+
 WebMock.disable_net_connect!
 
 RSpec.configure do |config|
